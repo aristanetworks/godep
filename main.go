@@ -83,10 +83,6 @@ func determineVendor(v string) bool {
 	ws := filepath.Join("Godeps", "_workspace")
 	s, err := os.Stat(ws)
 	if err == nil && s.IsDir() {
-		log.Printf("WARNING: Godep workspaces (./Godeps/_workspace) are deprecated and support for them will be removed when go1.8 is released.")
-		if ev {
-			log.Printf("WARNING: Go version (%s) & $GO15VENDOREXPERIMENT=%s wants to enable the vendor experiment, but disabling because a Godep workspace (%s) exists\n", v, go15ve, ws)
-		}
 		return false
 	}
 
