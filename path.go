@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "fmt"
 
 var cmdPath = &Command{
 	Name:  "path",
@@ -26,10 +23,6 @@ For more about how GOPATH works, see 'go help gopath'.
 func runPath(cmd *Command, args []string) {
 	if len(args) != 0 {
 		cmd.UsageExit()
-	}
-	if VendorExperiment {
-		fmt.Fprintln(os.Stderr, "Error: GO15VENDOREXPERIMENT is enabled and the vendor/ directory is not a valid Go workspace.")
-		os.Exit(1)
 	}
 	gopath := prepareGopath()
 	fmt.Println(gopath)
